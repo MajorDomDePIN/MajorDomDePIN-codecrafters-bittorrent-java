@@ -17,7 +17,7 @@ public class Main {
         System.out.println(e.getMessage());
         return;
       }
-    } else if ("decode".equals(command) && bencodedValue.endsWith("i")) {
+    } else if ("decode".equals(command) && bencodedValue.endsWith("e") && bencodedValue.startsWith("i")) {
       try {
         Integer decoded;
         decoded = decodeBencodeInt(bencodedValue);
