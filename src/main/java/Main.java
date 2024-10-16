@@ -6,10 +6,10 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     // You can use print statements as follows for debugging, they'll be visible when running tests.
-    System.out.println("Logs from your program will appear here!");
-    String command = args[0];
+      System.out.println("Logs from your program will appear here!");
+      String command = args[0];
     if("decode".equals(command)) {
-        Uncomment this block to pass the first stage
+        //Uncomment this block to pass the first stage
         String bencodedValue = args[1];
         String decoded;
         try {
