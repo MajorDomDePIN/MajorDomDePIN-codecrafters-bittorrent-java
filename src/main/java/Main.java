@@ -19,7 +19,7 @@ public class Main {
       }
     } else if ("decode".equals(command) && bencodedValue.endsWith("e") && bencodedValue.startsWith("i")) {
       try {
-        Integer decoded;
+        Long decoded;
         decoded = decodeBencodeInt(bencodedValue);
         System.out.println(decoded);
       } catch (RuntimeException e) {
@@ -47,11 +47,11 @@ public class Main {
     }
   }
 
-  static Integer decodeBencodeInt(String bencodedString) {
+  static Long decodeBencodeInt(String bencodedString) {
     if (Character.isLetter(bencodedString.charAt(0))
         && Character.isLetter(bencodedString.charAt(bencodedString.length() - 1))) {
       String encoded = bencodedString.substring(1, bencodedString.length() - 1);
-      return Integer.parseInt(encoded);
+      return Long.parseLong(encoded);
     } else {
       throw new RuntimeException("There was an error with your integer");
     }
