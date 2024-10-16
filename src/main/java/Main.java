@@ -21,7 +21,7 @@ public class Main {
       try {
         Integer decoded;
         decoded = decodeBencodeInt(bencodedValue);
-        System.out.println(gson.toJson(decoded));
+        System.out.println(decoded);
       } catch (RuntimeException e) {
         System.out.println(e.getMessage());
         return;
