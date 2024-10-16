@@ -3,38 +3,41 @@ import com.google.gson.Gson;
 
 public class Main {
   private static final Gson gson = new Gson();
+
   public static void main(String[] args) throws Exception {
     String command = args[0];
-    if("decode".equals(command)) {
-       String bencodedValue = args[1];
-       String decoded;
-       try {
-         decoded = decodeBencode(bencodedValue);
-       } catch(RuntimeException e) {
-         System.out.println(e.getMessage());
-         return;
-       }
-       System.out.println(gson.toJson(decoded));
+    if ("decode".equals(command)) {
+      String bencodedValue = args[1];
+      String decoded;
+      try {
+        decoded = decodeBencode(bencodedValue);
+      } catch (RuntimeException e) {
+        System.out.println(e.getMessage());
+        return;
+      }
+      System.out.println(gson.toJson(decoded));
     } else {
       System.out.println("Unknown command: " + command);
     }
   }
+
   static String decodeBencode(String bencodedString) {
     if (Character.isDigit(bencodedString.charAt(0))) {
       int firstColonIndex = 0;
-      for(int i = 0; i < bencodedString.length(); i++) { 
-        if(bencodedString.charAt(i) == ':') {
+      for (int i = 0; i < bencodedString.length(); i++) {
+        if (bencodedString.charAt(i) == ':') {
           firstColonIndex = i;
           break;
         }
       }
       int length = Integer.parseInt(bencodedString.substring(0, firstColonIndex));
-      return bencodedString.substring(firstColonIndex+1, firstColonIndex+1+length);
-    } else if(bencodedString.charAt(0) == "i" && bencodedString.charAt(bencodedString.length -1) == "e") {
-        return bencodedString.substring(1, bencodedString.length -2 );
+      return bencodedString.substring(firstColonIndex + 1, firstColonIndex + 1 + length);
+    } else if (Character.isLetter(bencodedString.charAt(0))
+        && Character.isLetter(bencodedString.charAt(bencodedString.length() - 1))) {
+      return bencodedString.substring(1, bencodedString.length() - 2);
     } else {
       throw new RuntimeException("Only strings are supported at the moment");
     }
   }
-  
+
 }
