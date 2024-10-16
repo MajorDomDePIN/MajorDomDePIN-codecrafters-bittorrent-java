@@ -17,7 +17,7 @@ public class Main {
         System.out.println(e.getMessage());
         return;
       }
-    } else if ("decode".equals(command) && Character.isDigit(bencodedValue.codePointAt(0))) {
+    } else if ("decode".equals(command) && bencodedValue.endsWith("i")) {
       try {
         Integer decoded;
         decoded = decodeBencodeInt(bencodedValue);
