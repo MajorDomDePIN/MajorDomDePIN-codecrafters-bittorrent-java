@@ -50,7 +50,7 @@ public class Main {
   static Integer decodeBencodeInt(String bencodedString) {
     if (Character.isLetter(bencodedString.charAt(0))
         && Character.isLetter(bencodedString.charAt(bencodedString.length() - 1))) {
-      String encoded = bencodedString.substring(1, bencodedString.length() - 2);
+      String encoded = bencodedString.substring(1, bencodedString.length() - 1);
       return Integer.parseInt(encoded);
     } else {
       throw new RuntimeException("There was an error with your integer");
