@@ -14,8 +14,6 @@ public class Main {
 
       String bencodedValue = args[1];
 
-      String decoded;
-
       Object decoded;
 
       try {
@@ -39,8 +37,6 @@ public class Main {
     }
 
   }
-
-  static String decodeBencode(String bencodedString) {
 
   static Object decodeBencode(String bencodedString) {
 
